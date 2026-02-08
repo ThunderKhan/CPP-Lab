@@ -1,0 +1,15 @@
+# executables
+*.exe
+main
+
+# object files
+*.o
+
+# static libraries
+*.a
+
+# editor settings
+.vscode/
+
+# macOS debug artifacts (harmless on Windows)
+*.dsym
