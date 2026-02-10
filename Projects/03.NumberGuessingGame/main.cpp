@@ -18,30 +18,33 @@ int takeUserInput() {
             std::cout << "Number must be between 1 and 100.\n";
             continue;
         }
-        
         break;
     }
-
     return guess;
 }
 
-int main() {
+int generateRandomInteger() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(1, 100);    
-    int x = dist(gen);
+    int randNumber = dist(gen);
 
+    return randNumber;
+}
+
+int main() {
+    int randomInteger = generateRandomInteger();
     int attempts{0};
    
     while(true) {
         int guess = takeUserInput();
         attempts++;
 
-        if (guess > x) {
+        if (guess > randomInteger) {
             std::cout << "Too big! Try a smaller number." << std::endl;
             std::cout << "Current number of attempts: " << attempts << std::endl;
             std::cout << "\n";
-        } else if (guess < x) {
+        } else if (guess < randomInteger) {
             std::cout << "Too small, try a larger number." << std::endl;
             std::cout << "Current number of attempts: " << attempts << std::endl;
             std::cout << "\n";
