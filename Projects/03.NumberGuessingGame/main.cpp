@@ -2,6 +2,9 @@
 #include <random>
 #include <limits>
 
+constexpr int MIN = 1;
+constexpr int MAX = 100;
+
 int takeUserInput() {
     int guess;
     
@@ -14,7 +17,7 @@ int takeUserInput() {
             continue;
         }
 
-        if (guess < 1 || guess > 100) {
+        if (guess < MIN || guess > MAX) {
             std::cout << "Number must be between 1 and 100.\n";
             continue;
         }
@@ -24,12 +27,9 @@ int takeUserInput() {
 }
 
 int generateRandomInteger() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dist(1, 100);    
-    int randNumber = dist(gen);
-
-    return randNumber;
+    std::mt19937 gen(std::random_device{}());
+    std::uniform_int_distribution<> dist(MIN, MAX);    
+    return dist(gen);
 }
 
 int main() {
