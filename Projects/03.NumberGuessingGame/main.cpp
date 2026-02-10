@@ -7,13 +7,19 @@ int takeUserInput() {
     
     while (true) {
         std::cout << "Enter a Number (1 - 100): ";
-        if (std::cin >> guess) {
-            break;
-        } else {
+        if (!(std::cin >> guess)) {
             std::cout << "Please enter a valid integer only.\n";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
         }
+
+        if (guess < 1 || guess > 100) {
+            std::cout << "Number must be between 1 and 100.\n";
+            continue;
+        }
+        
+        break;
     }
 
     return guess;
